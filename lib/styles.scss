@@ -1,0 +1,271 @@
+header {
+  background-color: #E5F3F2;
+  color: #6D6E71;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  padding-top: 35px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+span {
+  color: #00A79D;
+}
+
+article {
+  margin: 0 100px;
+}
+
+input, textarea {
+  border: 2px solid lightgray;
+  display: block;
+  font-family: "Open Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  height: 42px;
+  margin: 20px auto;
+  outline: none;
+  overflow: hidden;
+  padding: 0 10px;
+  resize: none;
+  width: 53%;
+}
+
+input:focus, textarea:focus {
+  border: 2px solid #00A79D;
+}
+
+h3 {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.input-fields {
+  background-color: #E5F3F2;
+  padding-top: 1px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.save-btn, .sort-btn {
+  background-color: #00A79D;
+  border: none;
+  color: #FFFFFF;
+  font-family: "Open Sans", sans-serif;
+  font-size: 26px;
+  height: 45px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 55%;
+}
+
+.save-btn:hover, .sort-btn:hover {
+  background-color: #045E55;
+  cursor: pointer;
+  outline: none;
+}
+
+.save-btn:focus, .sort-btn:focus {
+  border: 2px solid #045E55;
+  outline: none;
+}
+
+.save-btn:disabled {
+  background: lightgray;
+  cursor: default;
+}
+
+.idea-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.idea-card {
+  border-bottom: 2px solid #D1D3D4;
+  display: inline-block;
+  font-family: "Open Sans", sans-serif;
+  margin: 25px auto;
+  padding-bottom: 10px;
+  position: relative;
+  width: 55%;
+
+}
+
+.quality, h3 {
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 2px;
+  margin-bottom: 20px;
+}
+
+.quality {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+}
+
+
+.idea-title, .quality {
+  color: #6D6E71;
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.idea-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.idea-body {
+  color: #939598;
+  font-size: 24px;
+  line-height: 125%;
+  margin-bottom: 30px;
+  outline: none;
+}
+
+.up-vote, .down-vote, .delete-btn {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 40px;
+  outline: none;
+  width: 40px;
+}
+
+.up-vote, .down-vote {
+  bottom: 35px;
+  position: absolute;
+}
+.up-vote {
+
+  background: url(../images/upvote.svg);
+  left: -10px;
+}
+
+.up-vote:hover {
+  background: url(../images/upvote-hover.svg);
+}
+
+.down-vote {
+  background: url(../images/downvote.svg);
+  left: 45px;
+}
+
+.down-vote:hover {
+  background: url(../images/downvote-hover.svg);
+}
+
+.delete-btn {
+  background: url(../images/delete.svg);
+  float: right;
+}
+
+.delete-btn:hover {
+  background: url(../images/delete-hover.svg);
+}
+
+.time-stamp {
+  bottom: 0;
+  color: lightgray;
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+}
+
+.search-sort-fields {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.input-search, .sort-btn {
+  margin: 20px 5px;
+}
+
+.input-search {
+  width: 47%;
+}
+
+.sort-btn {
+  font-size: 20px;
+  height: 46px;
+  width: 50px;
+}
+
+@media screen and (max-width: 768px){
+  input, textarea {
+    width: 85%;
+  }
+
+  textarea {
+    height: 100px;
+    text
+  }
+
+  .save-btn {
+    width: 88%;
+  }
+
+  .idea-card {
+    width: 85%;
+  }
+
+
+    .input-search {
+      width: 77%;
+    }
+
+    .sort-btn {
+      font-size: 16px;
+      height: 46px;
+      width: 50px;
+    }
+}
+
+@media screen and (max-width: 420px){
+  header{
+    font-size: 42px;
+  }
+  input, textarea {
+    font-size: 24px;
+    height: 36px;
+    width: 80%;
+  }
+
+  textarea {
+    height: 100px;
+    text
+  }
+
+  article {
+    display: flex;
+  }
+
+  .save-btn {
+    width: 87%;
+  }
+
+  .idea-card {
+    width: 80%;
+  }
+
+  .idea-title {
+    font-size: 28px;
+  }
+
+  .idea-body, .quality, h3 {
+    font-size: 18px;
+  }
+
+
+    .input-search {
+      width: 60%;
+    }
+
+    .sort-btn {
+      width: 50px;
+      height: 40px;
+      font-size: 14px;
+    }
+}
