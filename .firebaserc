@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "shoot-the-breeze-f491b",
+    "staging": "shoot-the-breeze-staging"
+  }
+}
