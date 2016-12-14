@@ -1,10 +1,12 @@
+const path = require('path');
+
 module.exports = {
   entry: {
-    main: ['babel-polyfill', './lib/index.js'],
-    test: ['babel-polyfill', 'mocha!./test/index.js'],
+    main: ['babel-polyfill', './lib/index.js']
   },
   output: {
-    path: __dirname,
+    path: path.join(__dirname, 'public'),
+    publicPath: '/public/',
     filename: '[name].bundle.js',
   },
   module: {
@@ -21,6 +23,7 @@ module.exports = {
       { test: /\.scss$/, loader: 'style!css!sass' },
     ],
   },
+  devtool: 'source-map',
   resolve: {
     extensions: ['', '.js', '.jsx', '.json', '.scss', '.css'],
   },

@@ -1,31 +1,13 @@
-# React Starter Kit
+# Shoot The Breeze
 
-To install the dependencies:
+([Project Specification](http://frontend.turing.io/projects/shoot-the-breeze))
 
-```
-npm install
-```
+Setup setups:
 
-To fire up a development server:
-
-```
-npm start
-```
-
-Once the server is running, you can visit:
-
-* `http://localhost:8080/webpack-dev-server/` to run your application.
-* `http://localhost:8080/webpack-dev-server/test.html` to run your test suite in the browser.
-
-To build the static files:
-
-```js
-npm run build
-```
-
-
-To run tests in Node:
-
-```js
-npm test
-```
+- Clone this repository.
+- `npm install`
+- Set up a new Firebase application.
+- Replace the keys in `./lib/firebase.js`.
+- Turn on Google authentication in the Firebase specification.
+- Add the name of your project as the default in the .firebaserc file. This is the name you gave it in firebase, plus the string of characters that firebase appended, e.g. "shoot-the-breeze-aa5d9" 
+- `npm start` or `npm test`.
