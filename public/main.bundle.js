@@ -29533,10 +29533,22 @@
 	        'div',
 	        { className: 'Application' },
 	        user ? _react2.default.createElement(
-	          'p',
+	          'div',
 	          null,
-	          'Hello ',
-	          user.displayName
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Hello ',
+	            user.displayName
+	          ),
+	          ' ',
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: function onClick() {
+	                return (0, _firebase.signOut)();
+	              } },
+	            'Sign Out'
+	          )
 	        ) : _react2.default.createElement(
 	          'button',
 	          { onClick: function onClick() {
@@ -29593,7 +29605,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.reference = exports.signIn = undefined;
+	exports.reference = exports.signOut = exports.signIn = undefined;
 	
 	var _firebase = __webpack_require__(477);
 	
@@ -29618,8 +29630,12 @@
 	var signIn = exports.signIn = function signIn() {
 	  return auth.signInWithPopup(provider);
 	};
+	var signOut = exports.signOut = function signOut() {
+	  return auth.signOut();
+	};
 	var reference = exports.reference = _firebase2.default.database().ref('messages');
 	
+	//-----------------------------------------------------------------------------
 	// Initialize Firebase
 	// var config = {
 	//   apiKey: "AIzaSyAlgX-gBhy3DmWTtPzw91IRWeMneUALOz8",
@@ -29629,7 +29645,7 @@
 	//   messagingSenderId: "527483252809"
 	// };
 	// firebase.initializeApp(config);
-	// 
+	//
 	// const application = document.getElementById("application");
 	// const dbRef = firebase.database().ref().child("text");
 	// dbRef.on("value", snap => application.innerText = snap.val());
@@ -47437,7 +47453,7 @@
 	
 	
 	// module
-	exports.push([module.id, "body {\n  background: #ff0080; }\n\n.hello-world {\n  font-family: cursive; }\n\n#new-message--content {\n  height: 100px;\n  border: 1px dotted aliceblue; }\n", ""]);
+	exports.push([module.id, "body {\n  background: #fafafa; }\n\n.hello-world {\n  font-family: cursive; }\n\n#new-message--content {\n  height: 100px;\n  border: 1px dotted aliceblue; }\n", ""]);
 	
 	// exports
 
