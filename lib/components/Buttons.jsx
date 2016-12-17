@@ -12,13 +12,13 @@ export default class Buttons extends Component {
         <button
           type='button'
           className='submit-button'
-          disabled = { !this.props.draftMessage || (this.props.draftMessage.length >= 140) }
-          onClick={(e) => this.props.addMessage()}>Add New Message</button>
+          disabled = { !draftMessage || (draftMessage.length >= 140) }
+          onClick={(e) => addMessage()}>Add New Message</button>
         <button
           type='button'
           className='clear-button'
-          disabled = { !this.props.draftMessage || (this.props.draftMessage.length >= 140) }
-          onClick={() => this.props.deleteMessage()}>Clear</button>
+          disabled = { !draftMessage || (draftMessage.length >= 140) }
+          onClick={() => deleteMessage()}>Clear</button>
       </div>
     );
   }

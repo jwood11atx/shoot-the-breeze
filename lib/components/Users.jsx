@@ -1,10 +1,8 @@
 import React from 'react';
-import { uniqBy, sortedUniqBy, uniq, map, mapValues, extend } from 'lodash';
-
-class Users extends React.Component {
+export default class Users extends React.Component {
 
   render() {
-    let users = (
+    const users = (
       <span>{this.props.messages.map(m =>
         <li key={m.user.uid}>
           <button
@@ -24,4 +22,4 @@ class Users extends React.Component {
   }
 }
 
-module.exports = Users;
+// module.exports = Users;

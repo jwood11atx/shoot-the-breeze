@@ -54,34 +54,34 @@ export default class Application extends Component {
   }
 
   filterByUser(userName) {
-    let filteredMessages = filter(this.state.messages, (m) => {
+    const filteredMessages = filter(this.state.messages, (m) => {
       return m.user.displayName.includes(userName);
     });
     this.setState({ filteredMessages: filteredMessages });
   }
 
   render() {
-    const { user, messages, draftMessage } = this.state;
+    const { user, messages, draftMessage, filteredMessages } = this.state;
 
     return (
       <div className="Application">
-        <SignIn user={this.state.user} />
+        <SignIn user={user} />
         <ul>
-          <MessageField messages={this.state.messages} />
+          <MessageField messages={messages} />
         </ul>
         <Users
-          user={this.state.user}
-          filteredMessages={this.state.filteredMessages}
-          messages={this.state.messages}
+          user={user}
+          filteredMessages={filteredMessages}
+          messages={messages}
           filterByUser={this.filterByUser.bind(this)}
         />
-        <CharCounter draftMessage={this.state.draftMessage} />
+        <CharCounter draftMessage={draftMessage} />
         <MessageInput
           handleChange={this.inputNewMessage.bind(this)}
-          draftMessage={this.state.draftMessage}
+          draftMessage={draftMessage}
         />
         <Buttons
-          draftMessage={this.state.draftMessage}
+          draftMessage={draftMessage}
           addMessage={this.addNewMessage.bind(this)}
           deleteMessage={this.deleteMessage.bind(this)}
         />
