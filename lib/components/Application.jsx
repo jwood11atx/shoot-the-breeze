@@ -10,7 +10,6 @@ import Buttons from './Buttons';
 import Users from './Users';
 import SearchInput from './SearchInput';
 import Sort from './Sort';
-
 // Very few things in this component are a good idea.
 // Feel free to blow it all away.
 
@@ -72,7 +71,8 @@ export default class Application extends Component {
 
   searchMessages(e) {
     const searchField = e.target.value.toLowerCase();
-    const filteredMessages = filter(this.state.messages, (m) =>  {
+
+    const filteredMessages = filter(this.state.messages, (m) => {
       return m.content.toLowerCase().includes(searchField);
     });
     this.setState({ filteredMessages : filteredMessages })
