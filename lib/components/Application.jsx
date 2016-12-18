@@ -9,6 +9,7 @@ import Buttons from './Buttons';
 import Users from './Users';
 import SearchInput from './SearchInput';
 import Sort from './Sort';
+import moment from 'moment';
 
 // Very few things in this component are a good idea.
 // Feel free to blow it all away.
@@ -46,7 +47,7 @@ export default class Application extends Component {
     reference.push({
       user: pick(user, 'displayName', 'email', 'uid'),
       content: draftMessage,
-      createdAt: Date.now(),
+      createdAt: moment().format("MMMM D, hh:mm "),
     });
 
     this.setState({ draftMessage: '' });
@@ -65,10 +66,10 @@ export default class Application extends Component {
 
   searchMessages(e) {
     const searchField = e.target.value.toLowerCase();
-    const messages = filter(this.props.messages, (m) =>  {
+    const filteredMessages = filter(messages, (m) =>  {
       return m.content.toLowerCase().includes(searchField);
     });
-    this.setState({ messages : messages })
+    this.setState({ filteredMessages : filteredMessages })
     this.setState({ searchField: searchField });
   }
 
