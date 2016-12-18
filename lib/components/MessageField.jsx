@@ -8,7 +8,7 @@ export default class MessageField extends Component {
       <div>
         { this.props.messages.map(
           m => <li
-            key={m.key}>{m.user.displayName}: {m.content}
+            key={m.key}>{createdAt} {m.user.displayName}: {m.content}
           </li>)
         }
       </div>

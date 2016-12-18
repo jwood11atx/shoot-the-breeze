@@ -72,7 +72,7 @@ export default class Application extends Component {
 
   searchMessages(e) {
     const searchField = e.target.value.toLowerCase();
-    const filteredMessages = filter(messages, (m) =>  {
+    const filteredMessages = filter(this.state.messages, (m) =>  {
       return m.content.toLowerCase().includes(searchField);
     });
     this.setState({ filteredMessages : filteredMessages })
