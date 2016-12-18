@@ -7,6 +7,8 @@ import MessageField from './MessageField';
 import CharCounter from './CharCounter';
 import Buttons from './Buttons';
 import Users from './Users';
+import SearchInput from './SearchInput';
+import Sort from './Sort';
 
 // Very few things in this component are a good idea.
 // Feel free to blow it all away.
@@ -19,6 +21,7 @@ export default class Application extends Component {
       filteredMessages: [],
       draftMessage: '',
       user: null,
+      searchField: '',
     };
   }
 
@@ -60,31 +63,51 @@ export default class Application extends Component {
     this.setState({ filteredMessages: filteredMessages });
   }
 
+  searchMessages(e) {
+    const searchField = e.target.value.toLowerCase();
+    const messages = filter(this.props.messages, (m) =>  {
+      return m.content.toLowerCase().includes(searchField);
+    });
+    this.setState({ messages : messages })
+    this.setState({ searchField: searchField });
+  }
+
   render() {
-    const { user, messages, draftMessage, filteredMessages } = this.state;
+    const { user, messages, draftMessage, filteredMessages, searchField } = this.state;
 
     return (
       <div className="Application">
-        <SignIn user={user} />
+        <header>
+          <SignIn user={user} />
+          <SearchInput
+            searchMessages={this.searchMessages.bind(this)}
+            searchField={searchField}
+          />
+          <Sort />
+        </header>
         <ul>
           <MessageField messages={messages} />
         </ul>
-        <Users
-          user={user}
-          filteredMessages={filteredMessages}
-          messages={messages}
-          filterByUser={this.filterByUser.bind(this)}
-        />
-        <CharCounter draftMessage={draftMessage} />
-        <MessageInput
-          handleChange={this.inputNewMessage.bind(this)}
-          draftMessage={draftMessage}
-        />
-        <Buttons
-          draftMessage={draftMessage}
-          addMessage={this.addNewMessage.bind(this)}
-          deleteMessage={this.deleteMessage.bind(this)}
-        />
+        <ul>
+          <Users
+            user={user}
+            filteredMessages={filteredMessages}
+            messages={messages}
+            filterByUser={this.filterByUser.bind(this)}
+          />
+        </ul>
+        <footer>
+          <MessageInput
+            handleChange={this.inputNewMessage.bind(this)}
+            draftMessage={draftMessage}
+          />
+          <CharCounter draftMessage={draftMessage} />
+          <Buttons
+            draftMessage={draftMessage}
+            addMessage={this.addNewMessage.bind(this)}
+            deleteMessage={this.deleteMessage.bind(this)}
+          />
+        </footer>
       </div>
     );
   }
