@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import firebase, { reference, signIn, signOut } from '../firebase';
 import { pick, map, extend, filter, includes } from 'lodash';
 import SignIn from './SignIn';
@@ -22,6 +23,7 @@ export default class Application extends Component {
       draftMessage: '',
       user: null,
       searchField: '',
+      reverseSort: false,
     };
   }
 
@@ -46,7 +48,7 @@ export default class Application extends Component {
     reference.push({
       user: pick(user, 'displayName', 'email', 'uid'),
       content: draftMessage,
-      createdAt: Date.now(),
+      createdAt: moment().format("MMMM D, hh:mm "),
     });
 
     this.setState({ draftMessage: '' });
@@ -63,17 +65,22 @@ export default class Application extends Component {
     this.setState({ filteredMessages: filteredMessages });
   }
 
+  sortMessages(order) {
+    // order === 'up' ? this.setState({reverseSort: true}) : this.setState({reverseSort: false});
+    console.log('hi');
+  }
+
   searchMessages(e) {
     const searchField = e.target.value.toLowerCase();
-    const messages = filter(this.props.messages, (m) =>  {
+    const filteredMessages = filter(messages, (m) =>  {
       return m.content.toLowerCase().includes(searchField);
     });
-    this.setState({ messages : messages })
+    this.setState({ filteredMessages : filteredMessages })
     this.setState({ searchField: searchField });
   }
 
   render() {
-    const { user, messages, draftMessage, filteredMessages, searchField } = this.state;
+    const { user, messages, draftMessage, filteredMessages, searchField, reverseSort } = this.state;
 
     return (
       <div className="Application">
@@ -83,7 +90,7 @@ export default class Application extends Component {
             searchMessages={this.searchMessages.bind(this)}
             searchField={searchField}
           />
-          <Sort />
+          <Sort sort={this.sortMessages.bind(this)} />
         </header>
         <ul>
           <MessageField messages={messages} />
