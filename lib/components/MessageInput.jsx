@@ -12,6 +12,7 @@ export default class MessageInput extends Component {
           className="MessageInput"
           placeholder="Message…"
           value={draftMessage}
+          maxLength='140'
           onChange={e => handleChange(e)}
         />
         {/* <button
