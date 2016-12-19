@@ -10,8 +10,6 @@ import Buttons from './Buttons';
 import Users from './Users';
 import SearchInput from './SearchInput';
 import Sort from './Sort';
-// Very few things in this component are a good idea.
-// Feel free to blow it all away.
 
 export default class Application extends Component {
   constructor() {
@@ -47,7 +45,7 @@ export default class Application extends Component {
     reference.push({
       user: pick(user, 'displayName', 'email', 'uid'),
       content: draftMessage,
-      createdAt: moment().format("MMMM D, hh:mm "),
+      createdAt: moment().format('MMMM D, hh:mm '),
     });
 
     this.setState({ draftMessage: '' });
@@ -61,12 +59,11 @@ export default class Application extends Component {
     const filteredMessages = filter(this.state.messages, (m) => {
       return m.user.displayName.includes(userName);
     });
-    this.setState({ filteredMessages: filteredMessages });
+    this.setState({ filteredMessages });
   }
 
   sortMessages(order) {
-    // order === 'up' ? this.setState({reverseSort: true}) : this.setState({reverseSort: false});
-    console.log('hi');
+    order === 'up' ? this.setState({ reverseSort: true }) : this.setState({ reverseSort: false });
   }
 
   searchMessages(e) {
@@ -75,8 +72,8 @@ export default class Application extends Component {
     const filteredMessages = filter(this.state.messages, (m) => {
       return m.content.toLowerCase().includes(searchField);
     });
-    this.setState({ filteredMessages : filteredMessages })
-    this.setState({ searchField: searchField });
+    this.setState({ filteredMessages });
+    this.setState({ searchField });
   }
 
   render() {
@@ -93,7 +90,13 @@ export default class Application extends Component {
           <Sort sort={this.sortMessages.bind(this)} />
         </header>
         <ul>
-          <MessageField messages={messages} />
+          <MessageField
+            messages={messages}
+            filteredMessages={filteredMessages}
+            user={user}
+            reverseSort={reverseSort}
+            draftMessage={draftMessage}
+          />
         </ul>
         <ul>
           <Users
