@@ -7,7 +7,7 @@ export default class SearchInput extends React.Component {
           <input
             className="search-input"
             placeholder="Search"
-            onChange={e => searchMessages(e)}
+            onChange={e => this.props.searchMessages(e)}
           />
         </div>
       );
