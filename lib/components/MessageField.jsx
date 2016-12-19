@@ -3,19 +3,10 @@ import moment from 'moment';
 
 export default class MessageField extends Component {
   messagesCheck() {
-    let messageArray = [];
-    if(this.props.messages) {
-      this.props.messages.map(m =>
-      messageArray.push(<li key={m.key}>
-        {m.createdAt} {m.user.displayName}: {m.content}
-      </li>)
-    )}
-    return messageArray;
-  }
-
-  render() {
     const { messages, filteredMessages, user, reverseSort, draftMessage } = this.props;
+
     let messageField;
+
     if (filteredMessages.length && !reverseSort) {
       messageField = (
         <ul >{filteredMessages.map(m =>
@@ -53,7 +44,10 @@ export default class MessageField extends Component {
           </li>)}
         </ul>);
     }
+    return messageField;
+  }
 
+  render() {
     return (
       <div>
         {this.messagesCheck()}
