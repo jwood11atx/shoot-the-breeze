@@ -2,22 +2,29 @@ import React from 'react';
 
 export default class Users extends React.Component {
 
+  usersCheck() {
+    let userArray = [];
+    if(this.props.messages){
+        <span>{this.props.messages.map(m =>
+          userArray.push(<li key={m.user.uid}>
+            <button
+              className='user-btn'
+              onClick= {() => {this.props.filterByUser(m.user.displayName)}}>{m.user.displayName}
+            </button>
+            {m.user.email}
+          </li>))};
+        </span>
+      return userArray;
+    }
+  }
+
+
   render() {
-    const users = (
-      <span>{this.props.messages.map(m =>
-        <li key={m.user.uid}>
-          <button
-            className='UserBtn'
-            onClick= {() => {this.props.filterByUser(m.user.displayName)}}>{m.user.displayName}
-          </button>
-          {m.user.email}
-        </li>)}
-      </span>);
 
     return (
-      <aside className='UserList'>
+      <aside className='user-list'>
         <h4> Users </h4>
-        {users}
+        {this.usersCheck()}
       </aside>
     );
   }

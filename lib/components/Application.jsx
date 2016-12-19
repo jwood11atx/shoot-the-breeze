@@ -88,7 +88,7 @@ export default class Application extends Component {
           <SignIn user={user} />
           <SearchInput
             searchMessages={this.searchMessages.bind(this)}
-            searchField={searchField}
+            // searchField={searchField} I don't think this is used
           />
           <Sort sort={this.sortMessages.bind(this)} />
         </header>

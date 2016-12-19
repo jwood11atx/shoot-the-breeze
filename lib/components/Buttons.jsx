@@ -18,7 +18,7 @@ export default class Buttons extends Component {
           type='button'
           className='clear-button'
           disabled = { !draftMessage || (draftMessage.length >= 140) }
-          onClick={() => deleteMessage()}>Clear</button>
+          onClick={(e) => deleteMessage()}>Clear</button>
       </div>
     );
   }

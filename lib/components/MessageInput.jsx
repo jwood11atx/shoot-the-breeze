@@ -9,7 +9,7 @@ export default class MessageInput extends Component {
       <div >
         <input
           ref="msgInputfield"
-          className="MessageInput"
+          className="message-input"
           placeholder="Message…"
           value={draftMessage}
           onChange={e => handleChange(e)}
