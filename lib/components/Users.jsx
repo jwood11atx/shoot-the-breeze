@@ -3,24 +3,23 @@ import React from 'react';
 export default class Users extends React.Component {
 
   usersCheck() {
-    let userArray = [];
+    let userList = {};
     if(this.props.messages){
-        <span>{this.props.messages.map(m =>
-          userArray.push(<li key={m.user.uid}>
+        <span>{this.props.messages.map((m,i) =>
+          userList[m.user.displayName] =
+          <p key={i}>
             <button
               className='user-btn'
               onClick= {() => {this.props.filterByUser(m.user.displayName)}}>{m.user.displayName}
             </button>
             {m.user.email}
-          </li>))};
+          </p>)};
         </span>
-      return userArray;
+      return Object.values(userList);
     }
   }
 
-
   render() {
-
     return (
       <aside className='user-list'>
         <h4> Users </h4>
@@ -29,5 +28,3 @@ export default class Users extends React.Component {
     );
   }
 }
-
-// module.exports = Users;

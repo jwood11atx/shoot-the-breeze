@@ -100,7 +100,6 @@ export default class Application extends Component {
         </ul>
         <ul>
           <Users
-            user={user}
             filteredMessages={filteredMessages}
             messages={messages}
             filterByUser={this.filterByUser.bind(this)}
