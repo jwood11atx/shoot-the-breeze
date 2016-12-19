@@ -65,8 +65,7 @@ export default class Application extends Component {
   }
 
   sortMessages(order) {
-    // order === 'up' ? this.setState({reverseSort: true}) : this.setState({reverseSort: false});
-    console.log('hi');
+    order === 'up' ? this.setState({reverseSort: true}) : this.setState({reverseSort: false});
   }
 
   searchMessages(e) {
@@ -93,7 +92,13 @@ export default class Application extends Component {
           <Sort sort={this.sortMessages.bind(this)} />
         </header>
         <ul>
-          <MessageField messages={messages} />
+          <MessageField
+            messages={messages}
+            filteredMessages={filteredMessages}
+            user={user}
+            reverseSort={reverseSort}
+            draftMessage={draftMessage}
+          />
         </ul>
         <ul>
           <Users
