@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 export default class MessageField extends Component {
-
-  render() {
+  messagesCheck() {
     const { messages, filteredMessages, user, reverseSort, draftMessage } = this.props;
+
     let messageField;
+
     if (filteredMessages.length && !reverseSort) {
       messageField = (
         <ul >{filteredMessages.map(m =>
@@ -43,10 +44,13 @@ export default class MessageField extends Component {
           </li>)}
         </ul>);
     }
+    return messageField;
+  }
 
+  render() {
     return (
       <div>
-        {messageField}
+        {this.messagesCheck()}
       </div>
     );
   }
