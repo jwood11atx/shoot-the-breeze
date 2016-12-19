@@ -27,6 +27,11 @@ describe("SignIn", () => {
   it(" renders as a <div>", () => {
     assert.equal(wrapper.type(), "div");
   });
+
+  it(" has props", () => {
+    const wrapper = mount(<SignIn user={"bob"}/>);
+    expect(wrapper.prop("user")).to.equal("bob");
+  })
 });
 
 describe("SearchInput", () => {
@@ -64,21 +69,34 @@ describe("Sort", () => {
   it("should have 2 buttons", () => {
     expect(wrapper.find("button")).to.have.length(2);
   });
+  it("should have a prop", () => {
+    const wrapper = mount(<Sort sort={"test"}/>);
+    expect(wrapper.prop("sort")).to.equal("test");
+  })
 });
 
-// describe("MessageField", () => {
-//   const wrapper = shallow(<MessageField />);
-//
-//   it(" renders as a <div>", () => {
-//     expect(wrapper.type()).to.equal("div");
-//   });
-// 
-//   // it("should have props", () => {
-//   //   const wrapper = mount(<MessageField messages={"test"} />);
-//   //   expect(wrapper.prop("poop")).to.equal(undefined);
-//   //   expect(wrapper.prop("messages")).to.equal("test");
-//   // });
-// });
+describe("MessageField", () => {
+  const wrapper = shallow(<MessageField />);
+
+  it(" renders as a <div>", () => {
+    expect(wrapper.type()).to.equal("div");
+  });
+
+  it("should have props", () => {
+    const wrapper = mount(
+      <MessageField
+        messages={[{user: {displayName: "bob"}}]}
+        filteredMessages={[{key: "1", createdAt: "1", user: {displayName: "bob"}, content: "test"}]}
+      />);
+    expect(wrapper.prop("messages")[0].user.displayName).to.equal("bob");
+    expect(wrapper.prop("messages")).to.be.length(1);
+    expect(wrapper.prop("filteredMessages")[0].key).to.equal("1");
+    expect(wrapper.prop("filteredMessages")[0].createdAt).to.equal("1");
+    expect(wrapper.prop("filteredMessages")[0].user.displayName).to.equal("bob");
+    expect(wrapper.prop("filteredMessages")[0].content).to.equal("test");
+    expect(wrapper.prop("filteredMessages")).to.be.length(1);
+  });
+});
 
 describe("Users", () => {
   const wrapper = shallow(<Users />);
@@ -91,9 +109,18 @@ describe("Users", () => {
     expect(wrapper.find(".user-list")).to.be.length(1);
   });
 
-  // it("users have a button with class name of UserBtn", () => {
-  //   expect(wrapper.find(".UserBtn")).to.be.length(1);
-  // })
+  it("users have a button with class name of user-btn", () => {
+    const wrapper = mount(<Users messages={[{user: {displayName: "bob"}}]}/>)
+    expect(wrapper.find("button")).to.be.length(1);
+  });
+
+  it(" should have props", () => {
+    const wrapper = mount(
+      <Users filteredMessages={[{key: "1", createdAt: "1", user:   {displayName: "bob"}, content: "test"}]}
+              messages={[{user: {displayName: "bob"}}]}
+              filterByUser={[{key: "1", createdAt: "1", user:   {displayName: "bob"}, content: "test"}]}/>);
+              
+  })
 });
 
 describe("MessageInput", () => {
