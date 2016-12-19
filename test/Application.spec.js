@@ -66,19 +66,19 @@ describe("Sort", () => {
   });
 });
 
-describe("MessageField", () => {
-  const wrapper = shallow(<MessageField />);
-
-  it(" renders as a <div>", () => {
-    expect(wrapper.type()).to.equal("div");
-  });
-
-  // it("should have props", () => {
-  //   const wrapper = mount(<MessageField messages={"test"} />);
-  //   expect(wrapper.prop("poop")).to.equal(undefined);
-  //   expect(wrapper.prop("messages")).to.equal("test");
-  // });
-});
+// describe("MessageField", () => {
+//   const wrapper = shallow(<MessageField />);
+//
+//   it(" renders as a <div>", () => {
+//     expect(wrapper.type()).to.equal("div");
+//   });
+// 
+//   // it("should have props", () => {
+//   //   const wrapper = mount(<MessageField messages={"test"} />);
+//   //   expect(wrapper.prop("poop")).to.equal(undefined);
+//   //   expect(wrapper.prop("messages")).to.equal("test");
+//   // });
+// });
 
 describe("Users", () => {
   const wrapper = shallow(<Users />);
