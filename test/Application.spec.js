@@ -119,7 +119,18 @@ describe("Users", () => {
       <Users filteredMessages={[{key: "1", createdAt: "1", user:   {displayName: "bob"}, content: "test"}]}
               messages={[{user: {displayName: "bob"}}]}
               filterByUser={[{key: "1", createdAt: "1", user:   {displayName: "bob"}, content: "test"}]}/>);
-              
+    expect(wrapper.prop("messages")[0].user.displayName).to.equal("bob");
+    expect(wrapper.prop("messages")).to.be.length(1);
+    expect(wrapper.prop("filteredMessages")[0].key).to.equal("1");
+    expect(wrapper.prop("filteredMessages")[0].createdAt).to.equal("1");
+    expect(wrapper.prop("filteredMessages")[0].user.displayName).to.equal("bob");
+    expect(wrapper.prop("filteredMessages")[0].content).to.equal("test");
+    expect(wrapper.prop("filteredMessages")).to.be.length(1);
+    expect(wrapper.prop("filterByUser")[0].key).to.equal("1");
+    expect(wrapper.prop("filterByUser")[0].createdAt).to.equal("1");
+    expect(wrapper.prop("filterByUser")[0].user.displayName).to.equal("bob");
+    expect(wrapper.prop("filterByUser")[0].content).to.equal("test");
+    expect(wrapper.prop("filterByUser")).to.be.length(1);
   })
 });
 
@@ -133,6 +144,13 @@ describe("MessageInput", () => {
   it("has input with class named message-input", () => {
     expect(wrapper.find(".message-input")).to.be.length(1);
   });
+
+  it(" has props", () => {
+    const wrapper = mount(<MessageInput handleChange={"test"}
+                                        draftMessage={"test2"}/>);
+    expect(wrapper.prop("handleChange")).to.equal("test");
+    expect(wrapper.prop("draftMessage")).to.equal("test2");
+  });
 });
 
 describe("CharCounter", () => {
@@ -144,6 +162,11 @@ describe("CharCounter", () => {
 
   it("counter starts at 140", () => {
     expect(wrapper.find("span").children().nodes[1]).to.equal(140);
+  });
+
+  it(" has props", () => {
+    const wrapper = mount(<CharCounter draftMessage={"test"}/>);
+    expect(wrapper.prop("draftMessage")).to.equal("test");
   });
 });
 
@@ -193,4 +216,13 @@ describe("Buttons", () => {
   it(" clear button has an onClick function", () => {
     expect(wrapper.props().children[1].props.onClick).to.be.length(1);
   });
+
+  it(" has props", () => {
+    const wrapper = mount(<Buttons draftMessage={"test"}
+                                   addMessage={"test2"}
+                                   deleteMessage={"test3"}/>);
+    expect(wrapper.prop("draftMessage")).to.equal("test");
+    expect(wrapper.prop("addMessage")).to.equal("test2");
+    expect(wrapper.prop("deleteMessage")).to.equal("test3");
+  })
 });
