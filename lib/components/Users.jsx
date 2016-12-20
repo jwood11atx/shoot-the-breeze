@@ -5,7 +5,7 @@ export default class Users extends React.Component {
   usersCheck() {
     let userList = {};
     if(this.props.messages){
-        <span>{this.props.messages.map((m,i) =>
+        <aside className= "user-list">{this.props.messages.map((m,i) =>
           userList[m.user.displayName] =
           <p key={i}>
             <button
@@ -14,7 +14,7 @@ export default class Users extends React.Component {
             </button>
             {m.user.email}
           </p>)};
-        </span>
+        </aside>
       return Object.values(userList);
     }
   }
