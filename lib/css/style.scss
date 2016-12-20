@@ -1,0 +1,67 @@
+@import "variables";
+
+body {
+  position: relative;
+  background: $bodyBGColor;
+  font-family: $fontStyle;
+}
+
+header {
+  position: relative;
+  background: $headerBGColor;
+  color: $headerTextColor;
+  font-size: 28px;
+}
+
+.title, .sort-buttons, .search-input-container {
+  display: inline-block;
+  margin: 20px 10px;
+}
+
+.search-input-container {
+  width: 30%;
+}
+
+.search-input {
+  font-size: 28px;
+  background-color: $inputBGColor;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 10px;
+  border-style: none;
+}
+
+.sort-buttons {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  margin: 0;
+}
+
+.sort-buttons button {
+  margin: 0 5px;
+  width: 115px;
+  height: 50px;
+  border-radius: 10px;
+  border-style: none;
+  background-color: #3498db;
+  color: white;
+  font-size: 20px;
+}
+
+.message-field-container {
+  display: inline-block;
+}
+
+.user-list-container {
+  position: absolute;
+  top: 83px;
+  right: 0;
+  height: 88vh;
+  width: 25vw;
+  background-color: $inputBGColor;
+
+}
+
+.user-list {
+}

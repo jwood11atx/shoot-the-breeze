@@ -82,14 +82,13 @@ export default class Application extends Component {
     return (
       <div className="Application">
         <header>
-          <SignIn user={user} />
+          <span className="title">Shoot the Breeze</span>
           <SearchInput
             searchMessages={this.searchMessages.bind(this)}
-            searchField={searchField}
           />
           <Sort sort={this.sortMessages.bind(this)} />
         </header>
-        <ul>
+        <section className="message-field-container">
           <MessageField
             messages={messages}
             filteredMessages={filteredMessages}
@@ -97,16 +96,17 @@ export default class Application extends Component {
             reverseSort={reverseSort}
             draftMessage={draftMessage}
           />
-        </ul>
-        <ul>
+        </section>
+        <section className="user-list-container">
           <Users
             user={user}
             filteredMessages={filteredMessages}
             messages={messages}
             filterByUser={this.filterByUser.bind(this)}
           />
-        </ul>
+        </section>
         <footer>
+          <SignIn user={user} />
           <MessageInput
             handleChange={this.inputNewMessage.bind(this)}
             draftMessage={draftMessage}
