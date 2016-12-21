@@ -81,41 +81,48 @@ export default class Application extends Component {
 
     return (
       <div className="Application">
-        <header>
+        <header className="header">
           <span className="title">Shoot the Breeze</span>
           <SearchInput
             searchMessages={this.searchMessages.bind(this)}
           />
           <Sort sort={this.sortMessages.bind(this)} />
         </header>
-        <section className="message-field-container">
-          <MessageField
-            messages={messages}
-            filteredMessages={filteredMessages}
-            user={user}
-            reverseSort={reverseSort}
-            draftMessage={draftMessage}
-          />
+        <section className="main-body">
+          <article className="message-field-container">
+            <MessageField
+              messages={messages}
+              filteredMessages={filteredMessages}
+              user={user}
+              reverseSort={reverseSort}
+              draftMessage={draftMessage}
+            />
+          </article>
+          <article className="user-list-container">
+            <Users
+              user={user}
+              filteredMessages={filteredMessages}
+              messages={messages}
+              filterByUser={this.filterByUser.bind(this)}
+            />
+          </article>
         </section>
-        <section className="user-list-container">
-          <Users
-            filteredMessages={filteredMessages}
-            messages={messages}
-            filterByUser={this.filterByUser.bind(this)}
-          />
-        </section>
-        <footer>
-          <SignIn user={user} />
-          <MessageInput
-            handleChange={this.inputNewMessage.bind(this)}
-            draftMessage={draftMessage}
-          />
-          <CharCounter draftMessage={draftMessage} />
-          <Buttons
-            draftMessage={draftMessage}
-            addMessage={this.addNewMessage.bind(this)}
-            deleteMessage={this.deleteMessage.bind(this)}
-          />
+        <footer className="footer">
+          <section className="login-section">
+            <SignIn user={user} />
+          </section>
+          <section className="input-section">
+            <MessageInput
+              handleChange={this.inputNewMessage.bind(this)}
+              draftMessage={draftMessage}
+            />
+            <CharCounter draftMessage={draftMessage} />
+            <Buttons
+              draftMessage={draftMessage}
+              addMessage={this.addNewMessage.bind(this)}
+              deleteMessage={this.deleteMessage.bind(this)}
+            />
+          </section>
         </footer>
       </div>
     );
