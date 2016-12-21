@@ -93,7 +93,8 @@ export default class Application extends Component {
           <SearchInput
             searchMessages={this.searchMessages.bind(this)}
           />
-          <Sort sort={this.sortMessages.bind(this)} />
+          <Sort className="sort-buttons-container"
+                sort={this.sortMessages.bind(this)} />
         </header>
         <section className="main-body">
           <article className="message-field-container">
