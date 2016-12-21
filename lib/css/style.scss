@@ -5,6 +5,10 @@ body {
   font-family: $fontStyle;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .header {
   position: fixed;
   width: 100vw;
@@ -110,10 +114,6 @@ body {
   font-size: 20px;
 }
 
-button:hover {
-  cursor: pointer;
-}
-
 .created-at {
   color: $createdAt;
   margin-right: 5px;
@@ -171,6 +171,9 @@ button:hover {
   color: white;
   font-size: 20px;
 }
+
+
+
 
 @media (max-width: 760px) {
  .login-section {

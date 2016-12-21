@@ -37,8 +37,8 @@ describe("SignIn", () => {
 describe("SearchInput", () => {
   const wrapper = shallow(<SearchInput />);
 
-  it(" renders as a <div>", () => {
-    assert.equal(wrapper.type(), "div");
+  it(" renders as a <input>", () => {
+    assert.equal(wrapper.type(), "input");
   });
 
   it("should have an input", () => {
@@ -109,9 +109,9 @@ describe("Users", () => {
     expect(wrapper.find(".user-list")).to.be.length(1);
   });
 
-  it("users have a button with class name of user-btn", () => {
+  it("users have a p with class name of user-btn", () => {
     const wrapper = mount(<Users messages={[{user: {displayName: "bob"}}]}/>)
-    expect(wrapper.find("button")).to.be.length(1);
+    expect(wrapper.find("p")).to.be.length(1);
   });
 
   it(" should have props", () => {
@@ -141,7 +141,8 @@ describe("MessageInput", () => {
     assert.equal(wrapper.type(), "div");
   });
 
-  it("has input with class named message-input", () => {
+  it("has input with class name message-input", () => {
+    const wrapper = mount(<MessageInput user={"bob"}/>);
     expect(wrapper.find(".message-input")).to.be.length(1);
   });
 
@@ -157,10 +158,12 @@ describe("CharCounter", () => {
   const wrapper = shallow(<CharCounter/>);
 
   it(" renders as a <span>", () => {
+    const wrapper = shallow(<CharCounter user={"bob"} />)
     assert.equal(wrapper.type(), "span");
   });
 
   it("counter starts at 140", () => {
+    const wrapper = shallow(<CharCounter user={"bob"} />)
     expect(wrapper.find("span").children().nodes[1]).to.equal(140);
   });
 
@@ -171,14 +174,14 @@ describe("CharCounter", () => {
 });
 
 describe("Buttons", () => {
-  const wrapper = shallow(<Buttons />);
+  const wrapper = shallow(<Buttons user={"bob"}/>);
 
   it(" renders as a <div>", () => {
     assert.equal(wrapper.type(), "div");
   });
 
-  it(" has class name buttons", () => {
-    expect(wrapper.find(".buttons")).to.be.length(1);
+  it(" has class name buttons-container", () => {
+    expect(wrapper.find(".buttons-container")).to.be.length(1);
   });
 
   it(" has 2 buttons", () => {
@@ -193,12 +196,13 @@ describe("Buttons", () => {
     expect(wrapper.props().children[0].props.disabled).to.equal(true);
   });
 
-  it(" submit button is labeled 'Add New Message'", () => {
-    expect(wrapper.props().children[0].props.children).to.equal("Add New Message");
+  it(" submit button is labeled 'Submit'", () => {
+    expect(wrapper.props().children[0].props.children).to.equal("Submit");
   });
 
-  it(" submit button has an onClick function", () => {
-    expect(wrapper.props().children[0].props.onClick).to.be.length(1);
+  it(" submit button is disabled", () => {
+    const wrapper = shallow(<Buttons user={"bob"} />);
+    expect(wrapper.props().children[0].props.onClick).to.be.length(0);
   });
 
   it(" has a clear button", () => {
