@@ -45,13 +45,9 @@ body {
   display: inline-block;
 }
 
-.title, .sort-buttons, .search-input-container {
+.title, .sort-buttons, .search-input {
   display: inline-block;
   margin: 0px 10px;
-}
-
-.search-input-container {
-  width: 40%;
 }
 
 .search-input, .message-input {
@@ -63,16 +59,19 @@ body {
   border-style: none;
 }
 
+.search-input {
+  width: 40%;
+}
+
 .message-input {
   width: 60%;
   margin: 10px;
 }
 
-.sort-buttons-container {
-  position: relative;
+.sort-buttons {
   float: right;
   right: 15px;
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .sort-up, .sort-down {
@@ -163,6 +162,65 @@ button:hover {
   font-weight: bold;
 }
 
-.sign-in-out {
+.sign-in-btn, .sign-out-btn {
   @include buttonStyles;
+}
+
+.sign-in-btn {
+  background-color: $go;
+  color: white;
+  font-size: 20px;
+}
+
+@media (max-width: 760px) {
+ .login-section {
+   visibility: hidden;
+ }
+
+ .user-list-container {
+   visibility: hidden;
+ }
+
+ .title {
+   visibility: hidden;
+   height: 0;
+ }
+
+ .message-field-container {
+   width: 90%;
+   font-size: 20px;
+ }
+
+ .footer, .header {
+   text-align: center;
+   padding: 0;
+ }
+
+ .buttons-container {
+   position: relative;
+   margin-left: 25px;
+   margin-bottom: 20px;
+ }
+
+ .sort-buttons {
+   float: none;
+   margin: 0;
+   margin-bottom: 10px;
+ }
+
+
+ .message-input {
+   width: 80%;
+   margin-right: 5px;
+   margin-bottom: 0;
+ }
+
+ .search-input {
+   position: relative;
+   height: 40px;
+   width: 90%;
+   margin: 10px;
+   margin-top: 0;
+ }
+
 }

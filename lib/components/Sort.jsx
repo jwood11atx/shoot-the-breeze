@@ -6,7 +6,7 @@ export default class Sort extends Component {
 
   render() {
     return (
-      <div className='sort-buttons-container'>
+      <div className='sort-buttons'>
         <button className="sort-up" onClick={() => this.props.sort('up')}>Sort &uarr;</button>
         <button className="sort-down" onClick={() => this.props.sort('down')}>Sort &darr;</button>
       </div>

@@ -3,20 +3,33 @@ import firebase, { reference, signIn, signOut } from '../firebase';
 
 export default class MessageInput extends Component {
 
-  render() {
+  userCheck(user){
     const { draftMessage, handleChange, addNewMessage, app } = this.props;
+    let msgInput;
+
+    if(user){
+      msgInput =
+        <input
+          ref="msgInputfield"
+          className="message-input"
+          placeholder="Message…"
+          value={draftMessage}
+          maxLength='140'
+          onChange={e => handleChange(e)}
+          onKeyDown={(e) => {
+            if(e.keyCode === 13)
+              addNewMessage(app)
+          }}/>;
+    } else {
+      msgInput = <div></div>
+    }
+    return msgInput;
+  }
+
+  render() {
+    const { user } = this.props;
     return (
-      <input
-        ref="msgInputfield"
-        className="message-input"
-        placeholder="Message…"
-        value={draftMessage}
-        maxLength='140'
-        onChange={e => handleChange(e)}
-        onKeyDown={(e) => {
-          if(e.keyCode === 13)
-            addNewMessage(app)
-        }}/>
+      this.userCheck(user)
     );
   }
 }

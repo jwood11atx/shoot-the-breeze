@@ -35,7 +35,8 @@ export default class Application extends Component {
       selector.setState({
         messages: map(messages, (val, key) => extend(val, { key })),
       }, () => this.scrollDown());
-    });  }
+    });
+  }
 
   inputNewMessage(e) {
     this.setState({ draftMessage: e.target.value });
@@ -92,7 +93,8 @@ export default class Application extends Component {
           <SearchInput
             searchMessages={this.searchMessages.bind(this)}
           />
-          <Sort sort={this.sortMessages.bind(this)} />
+          <Sort className="sort-buttons-container"
+                sort={this.sortMessages.bind(this)} />
         </header>
         <section className="main-body">
           <article className="message-field-container">
@@ -120,18 +122,19 @@ export default class Application extends Component {
                     app={this}/>
           </section>
           <section className="input-section">
-            <MessageInput
-              handleChange={this.inputNewMessage.bind(this)}
-              draftMessage={draftMessage}
-              app={this}
-              addNewMessage={this.addNewMessage.bind(this)}
-            />
-            <CharCounter draftMessage={draftMessage} />
-            <Buttons
-              draftMessage={draftMessage}
-              addMessage={this.addNewMessage.bind(this)}
-              deleteMessage={this.deleteMessage.bind(this)}
-            />
+              <MessageInput
+                handleChange={this.inputNewMessage.bind(this)}
+                draftMessage={draftMessage}
+                app={this}
+                addNewMessage={this.addNewMessage.bind(this)}
+                user={user}/>
+              <CharCounter draftMessage={draftMessage}
+                           user={user}/>
+              <Buttons
+                draftMessage={draftMessage}
+                addMessage={this.addNewMessage.bind(this)}
+                deleteMessage={this.deleteMessage.bind(this)}
+                user={user}/>
           </section>
         </footer>
       </div>
