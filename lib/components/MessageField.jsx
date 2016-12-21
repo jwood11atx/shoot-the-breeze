@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 export default class MessageField extends Component {
+
+  chatMessage(m) {
+    return (
+      <li key={m.key}>
+        <span className="created-at">{m.createdAt}</span>
+        <span className="user-name">{m.user.displayName.split(' ').shift()}</span>
+        <p className="chat-message">{m.content}</p>
+        <br/>
+      </li>
+    );
+  }
+
   messagesCheck() {
     const { messages, filteredMessages, user, reverseSort, draftMessage } = this.props;
 
@@ -10,42 +22,22 @@ export default class MessageField extends Component {
       if (filteredMessages.length && !reverseSort) {
         messageField = (
           <ul >{filteredMessages.map(m =>
-            <li key={m.key}>
-              <span className="created-at">{m.createdAt}</span>
-              <span className="user-name">{m.user.displayName.split(' ').shift()}</span>
-              <p className="chat-message">{m.content}</p>
-              <br/>
-            </li>)}
+            this.chatMessage(m))}
           </ul>);
       } else if (filteredMessages.length) {
         messageField = (
           <ul >{filteredMessages.map(m =>
-            <li key={m.key}>
-              <span className="created-at">{m.createdAt}</span>
-              <span className="user-name">{m.user.displayName.split(' ').shift()}</span>
-              <p className="chat-message">{m.content}</p>
-              <br/>
-            </li>).reverse()}
+            this.chatMessage(m)).reverse()}
           </ul>);
       } else if (!reverseSort) {
         messageField = (
           <ul >{messages.map(m =>
-            <li key={m.key}>
-              <span className="created-at">{m.createdAt}</span>
-              <span className="user-name">{m.user.displayName.split(' ').shift()}</span>
-              <p className="chat-message">{m.content}</p>
-              <br/>
-            </li>)}
+            this.chatMessage(m))}
           </ul>);
       } else {
         messageField = (
           <ul >{messages.map(m =>
-            <li key={m.key}>
-              <span className="created-at">{m.createdAt}</span>
-              <span className="user-name">{m.user.displayName.split(' ').shift()}</span>
-              <p className="chat-message">{m.content}</p>
-              <br/>
-            </li>).reverse()}
+            this.chatMessage(m)).reverse()}
           </ul>);
       }
       return messageField;

@@ -8,10 +8,18 @@ export default class SignIn extends Component {
     return (
       <div className="login-display">
         { user ? <div>
+                    <button
+                      className='sign-out-button sign-in-out'
+                      onClick={() => signOut()}>
+                      Sign Out
+                    </button>
                     Logged in as {user.displayName} ({user.email})
-                    <button onClick={() => signOut()}>Sign Out</button>
                   </div>
-                : <button onClick={() => signIn()}>Sign In</button> }
+                : <button
+                  className='sign-in-button sign-in-out'
+                  onClick={() => signIn()}>
+                  Sign In
+                </button> }
       </div>
     );
   }

@@ -143,10 +143,17 @@ body {
 }
 
 .user-btn {
+  &:hover {
+        cursor: pointer;
+    }
   border: none;
   margin-top: 15px;
 }
 
 .user-header {
   font-weight: bold;
+}
+
+.sign-in-out {
+  @include buttonStyles;
 }
