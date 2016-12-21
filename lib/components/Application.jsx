@@ -25,15 +25,17 @@ export default class Application extends Component {
   }
 
   componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => this.setState({ user }));
+    this.pullChatHistory(this);
+  }
+
+  pullChatHistory(selector){
     reference.limitToLast(100).on('value', (snapshot) => {
       const messages = snapshot.val() || {};
-      this.setState({
+      selector.setState({
         messages: map(messages, (val, key) => extend(val, { key })),
-      });
-    });
-
-    firebase.auth().onAuthStateChanged(user => this.setState({ user }));
-  }
+      }, () => this.scrollDown());
+    });  }
 
   inputNewMessage(e) {
     this.setState({ draftMessage: e.target.value });
@@ -76,6 +78,10 @@ export default class Application extends Component {
     this.setState({ searchField });
   }
 
+  scrollDown(){
+    window.scrollBy(0, document.querySelector(".message-field").scrollHeight);
+  }
+
   render() {
     const { user, messages, draftMessage, filteredMessages, searchField, reverseSort } = this.state;
 
@@ -109,12 +115,16 @@ export default class Application extends Component {
         </section>
         <footer className="footer">
           <section className="login-section">
-            <SignIn user={user} />
+            <SignIn user={user}
+                    pullChatHistory={this.pullChatHistory.bind(this)}
+                    app={this}/>
           </section>
           <section className="input-section">
             <MessageInput
               handleChange={this.inputNewMessage.bind(this)}
               draftMessage={draftMessage}
+              app={this}
+              addNewMessage={this.addNewMessage.bind(this)}
             />
             <CharCounter draftMessage={draftMessage} />
             <Buttons
