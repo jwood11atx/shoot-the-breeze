@@ -16,7 +16,10 @@ export default class SignIn extends Component {
                     Logged in as {user.displayName} ({user.email})
                   </div>
                 : <button className='sign-in-button sign-in-out'
-                  onClick={() => {signIn(); setTimeout(()=>{pullChatHistory(app)}, 2500)}}>Sign In</button> }
+                  onClick={() => {signIn();
+                    setTimeout(() => {
+                    pullChatHistory(app)}, 2500)}
+                  }>Sign In</button> }
       </div>
     );
   }
