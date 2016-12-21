@@ -13,7 +13,7 @@ export default class Buttons extends Component {
           type='button'
           className='submit-button'
           disabled = { !draftMessage || (draftMessage.length >= 140) }
-          onClick={(e) => addMessage()}>Add New Message</button>
+          onClick={(e) => addMessage()}>Submit</button>
         <button
           type='button'
           className='clear-button'

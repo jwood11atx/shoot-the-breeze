@@ -6,7 +6,7 @@ export default class CharCounter extends React.Component {
     let draftMessageLength = draftMessage ? draftMessage.length : 0;
 
     return (
-      <span> {140 - draftMessageLength} </span>
+      <span className="char-counter"> {140 - draftMessageLength} </span>
     )
   }
 }

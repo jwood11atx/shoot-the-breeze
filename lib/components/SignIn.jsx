@@ -4,10 +4,14 @@ import firebase, { reference, signIn, signOut } from '../firebase';
 export default class SignIn extends Component {
 
   render() {
+    let { user } = this.props;
     return (
-      <div>
-        { this.props.user ? <button onClick={() => signOut()}>Sign Out</button>
-        : <button onClick={() => signIn()}>Sign In</button> }
+      <div className="login-display">
+        { user ? <div>
+                    Logged in as {user.displayName} ({user.email})
+                    <button onClick={() => signOut()}>Sign Out</button>
+                  </div>
+                : <button onClick={() => signIn()}>Sign In</button> }
       </div>
     );
   }

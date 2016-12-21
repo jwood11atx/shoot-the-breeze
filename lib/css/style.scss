@@ -1,67 +1,142 @@
 @import "variables";
 
 body {
-  position: relative;
   background: $bodyBGColor;
   font-family: $fontStyle;
 }
 
-header {
-  position: relative;
+.header {
+  position: fixed;
+  width: 100vw;
+  padding: 10px;
+  top: 0;
   background: $headerBGColor;
   color: $headerTextColor;
-  font-size: 28px;
+  font-size: 22px;
+}
+
+.footer{
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+}
+
+.login-section {
+  height: 50%;
+  background-color: $loginBGColor;
+  color: white;
+}
+
+.login-display {
+  padding: 15px 10px;
+}
+
+.input-section {
+  position: relative;
+  height: 50%;
+  background-color: $headerBGColor;
+}
+
+.message-section {
+  height: 50%;
+}
+
+.message-input, .char-counter, {
+  display: inline-block;
 }
 
 .title, .sort-buttons, .search-input-container {
   display: inline-block;
-  margin: 20px 10px;
+  margin: 0px 10px;
 }
 
 .search-input-container {
-  width: 30%;
+  width: 40%;
 }
 
-.search-input {
-  font-size: 28px;
+.search-input, .message-input {
+  font-size: 22px;
   background-color: $inputBGColor;
-  padding: 5px 10px;
+  padding: 5px 5px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   border-style: none;
+}
+
+.message-input {
+  width: 60%;
+  margin: 10px;
 }
 
 .sort-buttons {
-  position: absolute;
-  top: 15px;
-  right: 5px;
-  margin: 0;
+  position: relative;
+  float: right;
+  right: 10px;
+  margin-right: 15px;
 }
 
 .sort-buttons button {
-  margin: 0 5px;
-  width: 115px;
-  height: 50px;
-  border-radius: 10px;
-  border-style: none;
+  @include buttonStyles;
   background-color: #3498db;
   color: white;
   font-size: 20px;
 }
 
+.buttons {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+}
+
+.char-counter {
+  color: $inputBGColor
+}
+
+.submit-button {
+  @include buttonStyles;
+  background-color: $go;
+  color: white;
+  font-size: 20px;
+}
+
+.clear-button {
+  @include buttonStyles;
+  background-color: $stop;
+  color: white;
+  font-size: 20px;
+}
+
+.created-at {
+  color: $createdAt;
+  margin-right: 5px;
+}
+
+.user-name {
+  color: $userName;
+  font-weight: bolder;
+}
+
+
+.main-body {
+  margin-top: 56px;
+
+}
+
 .message-field-container {
-  display: inline-block;
+  float: left;
+  height: 100%;
+  width: 65%;
+  margin-bottom: 100px;
+}
+
+.message-field {
+  padding: 10px;
 }
 
 .user-list-container {
-  position: absolute;
-  top: 83px;
+  position: fixed;
   right: 0;
-  height: 88vh;
-  width: 25vw;
+  height: 100%;
+  width: 35%;
   background-color: $inputBGColor;
-
-}
-
-.user-list {
 }
