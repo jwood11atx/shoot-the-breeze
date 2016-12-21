@@ -138,5 +138,15 @@ body {
   right: 0;
   height: 100%;
   width: 35%;
+  padding: 15px;
   background-color: $inputBGColor;
+}
+
+.user-btn {
+  border: none;
+  margin-top: 15px;
+}
+
+.user-header {
+  font-weight: bold;
 }

@@ -7,13 +7,12 @@ export default class Users extends React.Component {
     if(this.props.messages){
         <aside className= "user-list">{this.props.messages.map((m,i) =>
           userList[m.user.displayName] =
-          <p key={i}>
-            <button
+            <p
+              key={i}
               className='user-btn'
-              onClick= {() => {this.props.filterByUser(m.user.displayName)}}>{m.user.displayName}
-            </button>
-            {m.user.email}
-          </p>)};
+              onClick= {() => {this.props.filterByUser(m.user.displayName)}}>{m.user.displayName} ({m.user.email})
+            </p>
+          )};
         </aside>
       return Object.values(userList);
     }
@@ -22,7 +21,7 @@ export default class Users extends React.Component {
   render() {
     return (
       <aside className='user-list'>
-        <h4> Users </h4>
+        <h2 className='user-header'> Users </h2>
         {this.usersCheck()}
       </aside>
     );
