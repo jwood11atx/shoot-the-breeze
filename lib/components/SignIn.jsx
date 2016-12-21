@@ -4,7 +4,7 @@ import firebase, { reference, signIn, signOut } from '../firebase';
 export default class SignIn extends Component {
 
   render() {
-    let { user } = this.props;
+    let { user, pullChatHistory, app } = this.props;
     return (
       <div className="login-display">
         { user ? <div>
@@ -15,11 +15,8 @@ export default class SignIn extends Component {
                     </button>
                     Logged in as {user.displayName} ({user.email})
                   </div>
-                : <button
-                  className='sign-in-button sign-in-out'
-                  onClick={() => signIn()}>
-                  Sign In
-                </button> }
+                : <button className='sign-in-button sign-in-out'
+                  onClick={() => {signIn(); setTimeout(()=>{pullChatHistory(app)}, 2500)}}>Sign In</button> }
       </div>
     );
   }
