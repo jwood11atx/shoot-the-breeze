@@ -123,6 +123,8 @@ export default class Application extends Component {
             <MessageInput
               handleChange={this.inputNewMessage.bind(this)}
               draftMessage={draftMessage}
+              app={this}
+              addNewMessage={this.addNewMessage.bind(this)}
             />
             <CharCounter draftMessage={draftMessage} />
             <Buttons
