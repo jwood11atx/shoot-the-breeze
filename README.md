@@ -1,13 +1,13 @@
-# Shoot The Breeze
+#Shoot the Breeze
 
-([Project Specification](http://frontend.turing.io/projects/shoot-the-breeze))
+##A real-time chat app built in React
 
-Setup setups:
+###Utilizes:
 
-- Clone this repository.
-- `npm install`
-- Set up a new Firebase application.
-- Replace the keys in `./lib/firebase.js`.
-- Turn on Google authentication in the Firebase specification.
-- Add the name of your project as the default in the .firebaserc file. This is the name you gave it in firebase, plus the string of characters that firebase appended, e.g. "shoot-the-breeze-aa5d9" 
-- `npm start` or `npm test`.
+* React
+* ES6 syntax via babel
+* Webpack
+* Tested w/ enzyme/mocha
+* Firebase API
+
+![Alt text](https://gyazo.com/89574b20134da09b1f6ffc92cbe1055b "Screenshot")
